@@ -35,7 +35,8 @@ int main() {
 		std::cin >> logical_size;
 
 		if (logical_size > actual_size) {
-			std::cout << "Ошибка! Логический размер массива не может превышать фактический!" << std::endl;
+			std::cout << "Ошибка! Логический размер массива не может превышать фактический!" 
+				<< std::endl;
 			continue;
 		}
 
