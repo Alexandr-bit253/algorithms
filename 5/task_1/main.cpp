@@ -3,7 +3,7 @@
 
 
 void print_array(int*& arr, int& size_arr) {
-	std::println("Исходный массив:");
+	std::print("Исходный массив:");
 	for (int i = 0; i < size_arr; ++i) {
 		std::cout << " " << arr[i];
 	}
@@ -12,21 +12,27 @@ void print_array(int*& arr, int& size_arr) {
 
 
 void print_pyramid(int*& arr, int& size_arr) {
+	std::println();
 	print_array(arr, size_arr);
 
 	std::println("Пирамида:");
 
-	int layer{ 1 };
-	std::println("{} root {}", layer++, arr[0]);
+	std::println("0 root {}", arr[0]);
 
 	for (int i = 0; i < size_arr; ++i) {
 		int left_i{ 2 * i + 1 }, right_i{ 2 * i + 2 };
+		int level{ 0 }, parent{ i };
+
+		while (parent > 0) {
+			parent = (parent - 1) / 2;
+			level++;
+		}
 
 		if (left_i < size_arr) {
-			std::println("{} left {}", layer, arr[left_i]);
+			std::println("{} left({}) {}", level + 1, arr[i], arr[left_i]);
 		}
-		else if (right_i < size_arr) {
-			std::println("{} right {}", layer, arr[right_i]);
+		if (right_i < size_arr) {
+			std::println("{} right({}) {}", level + 1, arr[i], arr[right_i]);
 		}
 	}
 }
@@ -42,6 +48,8 @@ int main() {
 	int* arr3 = new int[size3] { 16, 11, 9, 10, 5, 6, 8, 1, 2, 4 };
 
 	print_pyramid(arr1, size1);
+	print_pyramid(arr2, size2);
+	print_pyramid(arr3, size3);
 
 	return 0;
 }
