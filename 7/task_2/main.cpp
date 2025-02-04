@@ -76,7 +76,7 @@ int main() {
 	if (!matrix) return 1;
 
 	while (true) {
-		std::cout << "Введите число от 1 до " << n << ": ";
+		std::cout << "В графе " << n << " вершин.Введите номер вершины, с которой начнётся обход: ";
 		std::cin >> first;
 
 		if (first > 0 && first <= n) {
